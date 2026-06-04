@@ -8,7 +8,7 @@ pipeline{
         }
         stage('build docker image'){
             steps{
-                bat "docker build -t jenkins-docker-demo:v1"
+                bat "docker build -t jenkins-docker-demo:v1 ."
             }
         }
         stage('run docker container'){
