@@ -1,0 +1,31 @@
+pipeline{
+    stages{
+        stage('check docker'){
+            steps{
+                bat "docker --version"
+            }
+        }
+        stage('build docker image'){
+            steps{
+                bat "docker build -t jenkins-docker-demo:v1"
+            }
+        }
+        stage('run docker container'){
+            steps{
+                bat "docker run jenkins-docker-demo:v1"
+            }
+        }
+    }
+
+    post{
+        always{
+            echo "Pipeline script started"
+        }
+        success{
+            echo "pipeline success"
+        }
+        failure{
+            echo "pipeline failed"
+        }
+    }
+}
